@@ -10,5 +10,8 @@ const body = await response.text();
 
 let $ = load(body);
 
-let title = $('title');
-console.log(title.text());
+{
+  $ = load(body);
+  const path = $('img').attr('src');
+  console.log(path);
+}
