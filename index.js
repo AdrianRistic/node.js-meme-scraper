@@ -1,5 +1,6 @@
 import { load } from 'cheerio';
 import fetch from 'node-fetch';
+import path from 'path';
 
 const memeURL = 'https://memegen-link-examples-upleveled.netlify.app';
 
