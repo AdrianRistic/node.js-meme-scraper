@@ -42,9 +42,7 @@ async function getMemes() {
       const meme = $(el).find('img').attr('src');
 
       // Push the data into the items array
-      items.push({
-        meme,
-      });
+      items.push(meme);
     });
 
     console.log(items);
