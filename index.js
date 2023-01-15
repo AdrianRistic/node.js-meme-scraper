@@ -43,9 +43,15 @@ async function getMemes() {
 
       // Push the data into the items array
       items.push(meme);
-    });
+      /*
 
-    console.log(items);
+      }
+      */
+    });
+    for (let i = 3; i < 13; i++) {
+      console.log(items[i]);
+    }
+    //console.log(items[3]);
   } catch (error) {
     console.log(error);
   }
