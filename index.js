@@ -1,5 +1,7 @@
 //import { load } from 'cheerio';
 import * as cheerio from 'cheerio';
+import fs from 'fs';
+import { ImagesPayload } from 'imastify';
 import fetch from 'node-fetch';
 
 //import path from 'path';
@@ -37,11 +39,11 @@ async function getMemes() {
     $('div').map((i, el) => {
       // Select img tag and src attribute
 
-      const photo = $(el).find('img').attr('src');
+      const meme = $(el).find('img').attr('src');
 
       // Push the data into the items array
       items.push({
-        photo,
+        meme,
       });
     });
 
