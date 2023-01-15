@@ -18,7 +18,7 @@ import fetch from 'node-fetch';
 }
 
 // Function starts here
-async function getFormulaOneDrivers() {
+async function getMemes() {
   try {
     // Fetch data from URL and store the response into a const
     const response = await fetch(
@@ -33,9 +33,9 @@ async function getFormulaOneDrivers() {
     // Create empty array
     const items = [];
 
-    // Selecting Each col-12 class name and iterate through the list
+    // Selecting Each div and iterate through the list
     $('div').map((i, el) => {
-      // Select rank, points, first name, last name, team and photo
+      // Select img tag and src attribute
 
       const photo = $(el).find('img').attr('src');
 
@@ -51,5 +51,5 @@ async function getFormulaOneDrivers() {
   }
 }
 
-// Run getFormulaOneDrivers
-getFormulaOneDrivers();
+// Run getMemes
+getMemes();
