@@ -55,6 +55,7 @@
     "@typescript-eslint/utils": "5.47.1"
   },
   "dependencies": {
+    "axios": "^1.2.2",
     "cheerio": "^1.0.0-rc.12",
     "imastify": "^1.0.5",
     "node-fetch": "^3.3.0"

@@ -1,3 +1,4 @@
+import axios, { AxiosError, isCancel } from 'axios';
 //import { load } from 'cheerio';
 import * as cheerio from 'cheerio';
 import fs from 'fs';
@@ -48,7 +49,7 @@ async function getMemes() {
       }
       */
     });
-    for (let i = 3; i < 13; i++) {
+    for (let i = 3; i < 12; i++) {
       console.log(items[i]);
     }
     console.log(items[3]);
@@ -58,7 +59,7 @@ async function getMemes() {
   }
 }
 
-async function memeprinter(items) {
+/*async function memeprinter(items) {
   const payload = new ImagesPayload({
     // example headers
     headers: {
@@ -110,6 +111,16 @@ async function memeprinter(items) {
   }
 }
 
-// Run getMemes
-const items = getMemes();
-memeprinter(items);
+
+//const items = getMemes();
+//memeprinter(items);
+*/
+getMemes();
+
+axios({
+  method: 'get',
+  url: 'https://api.memegen.link/images/bad/your_meme_is_bad/and_you_should_feel_bad.jpg?width=300',
+  responseType: 'stream',
+}).then(function (response) {
+  response.data.pipe(fs.createWriteStream('../memes/spicymeme.png'));
+});
