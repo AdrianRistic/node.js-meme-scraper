@@ -1,7 +1,6 @@
 import axios, { AxiosError, isCancel } from 'axios';
 import * as cheerio from 'cheerio';
 import fs from 'fs';
-import { ImagesPayload } from 'imastify';
 import fetch from 'node-fetch';
 import path from 'path';
 
@@ -32,7 +31,7 @@ async function getMemes() {
     });
     for (let i = 3; i < 12; i++) {}
 
-    //search the memes directory, if there are already memes delete those
+    // search the memes directory, if there are already memes delete those
 
     const dir = '../memes';
 
@@ -47,7 +46,7 @@ async function getMemes() {
       }
     });
 
-    //put the image links into a new array and put that array into image downloader axios so we get the right image numbers when axios downloads
+    // put the image links into a new array and put that array into image downloader axios so we get the right image numbers when axios downloads
 
     const memeArray = items.slice(3, 13);
     for (let i = 0; i < 10; i++) {
@@ -67,6 +66,6 @@ async function getMemes() {
   }
 }
 
-//next step: free the MEMES!!!
+// next step: free the MEMES!!!
 
 getMemes();
