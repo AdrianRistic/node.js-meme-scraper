@@ -4,6 +4,7 @@ import * as cheerio from 'cheerio';
 import fs from 'fs';
 import { ImagesPayload } from 'imastify';
 import fetch from 'node-fetch';
+import path from 'path';
 
 //import path from 'path';
 
@@ -52,8 +53,33 @@ async function getMemes() {
     for (let i = 3; i < 12; i++) {
       console.log(items[i]);
     }
-    console.log(items[3]);
-    return items;
+
+    const dir = '../memes';
+
+    fs.readdir(dir, (err, files) => {
+      if (err) throw err;
+      if (files.length !== 0) {
+        for (const file of files) {
+          fs.unlink(path.join(dir, file), (err) => {
+            if (err) throw err;
+          });
+        }
+      }
+    });
+
+    const memeArray = items.slice(3, 13);
+    for (let i = 0; i < 10; i++) {
+      const customstring = '../memes/spicymeme' + (i + 1) + '.png';
+      await axios({
+        method: 'get',
+        url: memeArray[i],
+        responseType: 'stream',
+      }).then(function (response) {
+        response.data.pipe(fs.createWriteStream(customstring));
+      });
+    }
+
+    // return items;
   } catch (error) {
     console.log(error);
   }
@@ -117,10 +143,37 @@ async function getMemes() {
 */
 getMemes();
 
-axios({
+/*axios({
   method: 'get',
   url: 'https://api.memegen.link/images/bad/your_meme_is_bad/and_you_should_feel_bad.jpg?width=300',
   responseType: 'stream',
 }).then(function (response) {
   response.data.pipe(fs.createWriteStream('../memes/spicymeme.png'));
 });
+*/
+
+async function doShit(item) {
+  const customstring = '../memes/spicymeme' + item + '.png';
+  await axios({
+    method: 'get',
+    url: item,
+    responseType: 'stream',
+  }).then(function (response) {
+    response.data.pipe(fs.createWriteStream(customstring));
+  });
+}
+
+async function memeprinter(items) {
+  try {
+    for (let i = 3; i < 12; i++) {
+      console.log(items[5] + '    spammyspamspam');
+      setTimeout(await doShit(items[i]), 500);
+    }
+  } catch (error) {
+    return { error: error };
+  }
+}
+
+/*const items = getMemes();
+memeprinter(items);
+*/
