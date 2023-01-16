@@ -1,8 +1,8 @@
-import axios, { AxiosError, isCancel } from 'axios';
+import * as fs from 'node:fs';
+import path from 'node:path';
+import axios from 'axios';
 import * as cheerio from 'cheerio';
-import fs from 'fs';
 import fetch from 'node-fetch';
-import path from 'path';
 
 // Function starts here
 async function getMemes() {
@@ -29,6 +29,7 @@ async function getMemes() {
       // Push the data into the items array
       items.push(meme);
     });
+
     for (let i = 3; i < 12; i++) {}
 
     // search the memes directory, if there are already memes delete those
