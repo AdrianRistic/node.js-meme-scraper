@@ -40,8 +40,8 @@ async function getMemes() {
       if (err) throw err;
       if (files.length !== 0) {
         for (const file of files) {
-          fs.unlink(path.join(dir, file), (err) => {
-            if (err) throw err;
+          fs.unlink(path.join(dir, file), (errr) => {
+            if (errr) throw errr;
           });
         }
       }
@@ -56,12 +56,12 @@ async function getMemes() {
         method: 'get',
         url: memeArray[i],
         responseType: 'stream',
-      }).then(function (response) {
-        response.data.pipe(fs.createWriteStream(customstring));
+      }).then(function (respond) {
+        respond.data.pipe(fs.createWriteStream(customstring));
       });
     }
 
-    // return items;
+    // catching errors;
   } catch (error) {
     console.log(error);
   }
@@ -69,4 +69,4 @@ async function getMemes() {
 
 // next step: free the MEMES!!!
 
-getMemes();
+await getMemes();
