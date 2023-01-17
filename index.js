@@ -21,7 +21,7 @@ async function getMemes() {
     const items = [];
 
     // Selecting Each div and iterate through the list
-    $('div').map((i, el) => {
+    $('div').each((i, el) => {
       // Select img tag and src attribute
 
       const meme = $(el).find('img').attr('src');
